@@ -1,19 +1,15 @@
-import type { Metadata } from "next";
 import "./globals.css";
+import Footer from "../components/Footer";
 
-export const metadata: Metadata = {
+export const metadata = {
   title: "Rehaan — Google",
   description: "Personal portfolio search — a Google-style clone",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="antialiased">
+  <body className="antialiased font-roboto">
         {/* Top-right nav (Gmail, Images, More, Profile) similar to Google */}
         <nav className="absolute right-6 top-4 z-50 flex items-center gap-4 text-sm">
           <a
@@ -58,7 +54,8 @@ export default function RootLayout({
           </button>
         </nav>
 
-        {children}
+        <main className="min-h-screen">{children}</main>
+        <Footer />
       </body>
     </html>
   );

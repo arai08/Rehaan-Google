@@ -1,26 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ropa:wght@400;700&display=swap');
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* switch to near-black canvas to match the later screenshot */
+  --background: #070607; /* near-black */
+  --foreground: #F5F5F7; /* light text */
+  --muted: #9b97a3;
+  --pill-bg: rgba(255,255,255,0.03);
+  --pill-inner: #2f2333; /* darker purple for input interior */
+  --accent: #6b4dd6; /* purple accent for focus */
+  /* font CSS variables used by Tailwind config */
+  --font-roboto: 'Roboto', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  --font-ropa-sans: 'Ropa', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: 'Ropa', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', 'Courier New', monospace;
 }
 
+/* keep the same dark theme across light/dark to match screenshot */
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #2b2433;
+    --foreground: #f5f5f7;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  min-height: 100vh;
+}
+
+/* Centering tweaks for the app area so the logo and pill sit lower similar to screenshot */
+.app-center {
+  min-height: calc(100vh - 96px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 96px;
+}
+
+.wordmark {
+  font-family: var(--font-ropa-sans);
+  /* tuned to match screenshot: large, heavy, tighter kerning */
+  font-weight: 700;
+  color: var(--foreground);
+  /* tighter kerning to visually match the sample */
+  letter-spacing: -0.05em;
+  font-size: 60px;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* subtle stroke/shadow to increase optical weight when Product Sans isn't available */
+  text-shadow: 0 1px 0 rgba(0,0,0,0.55), 0 2px 8px rgba(0,0,0,0.45);
+}
+
+.search-pill {
+  background: var(--pill-inner);
+  border-radius: 9999px;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 760px;
+  max-width: calc(100% - 48px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.03);
+}
+
+.search-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--foreground);
+  width: 100%;
+  font-size: 16px;
+  padding: 6px 0;
+}
+
+.pill-icon {
+  color: var(--muted);
+  opacity: 0.95;
+}
+
+.buttons-row {
+  margin-top: 18px;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.ghost-btn {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.06);
+  color: var(--muted);
+  padding: 9px 16px;
+  border-radius: 6px;
+  transition: transform 120ms ease, background-color 120ms ease;
+}
+
+.ghost-btn:hover {
+  transform: translateY(-1px);
+  background: rgba(255,255,255,0.02);
 }

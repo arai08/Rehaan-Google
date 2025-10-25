@@ -1,0 +1,14 @@
+[
+  {
+    "id": "meetmidway",
+    "title": "MeetMidway",
+    "description": "A location-based meetup app connecting people nearby for activities and events.",
+    "tags": ["react", "geo", "mobile"]
+  },
+  {
+    "id": "blu3whale",
+    "title": "Blu3Whale",
+    "description": "Brand identity and marketing site for a creative studio.",
+    "tags": ["design", "branding", "web"]
+  }
+]
